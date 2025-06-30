@@ -23,7 +23,7 @@
   color: #8e24aa;
 }
 .input {
-  width: 100%;
+  max-width: 100%;
   padding: 10px 12px;
   border: 1px solid #e0d7ec;
   border-radius: 6px;

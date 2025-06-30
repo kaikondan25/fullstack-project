@@ -5,14 +5,29 @@ export default function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock login: accept any non-empty username/password
-    if (username && password) {
-      onLogin(username);
-    } else {
-      setError('Please enter username and password');
+    setError('');
+    setLoading(true);
+    try {
+      const res = await fetch('http://localhost:4000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        onLogin(data.username);
+      } else {
+        setError(data.error || 'Login failed');
+      }
+    } catch (err) {
+      setError('Network error');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -28,7 +43,7 @@ export default function LoginForm({ onLogin }) {
         <label className={styles.label}>Password:</label>
         <input className={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </div>
-      <button className={styles.button} type="submit">Login</button>
+      <button className={styles.button} type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
     </form>
   );
 }
