@@ -20,9 +20,9 @@ function App() {
         <LoginForm onLogin={setUser} />
       ) : (
         <>
-          <div style={{ textAlign: 'right', margin: '16px 32px 0 0' }}>
-            <span style={{ marginRight: 12 }}>Hello, {user}!</span>
-            <button onClick={handleLogout} style={{ background: '#8e24aa', color: '#fff', border: 'none', borderRadius: 6, padding: '8px 16px', fontWeight: 600, cursor: 'pointer' }}>Logout</button>
+          <div className="logout-bar">
+            <span>Hello, {user}!</span>
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
           </div>
           <ProjectsList />
         </>

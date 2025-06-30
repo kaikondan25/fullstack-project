@@ -47,3 +47,20 @@ body {
 .read-the-docs {
   color: #888;
 }
+
+.logout-bar {
+  text-align: right;
+  margin: 16px 32px 0 0;
+}
+.logout-bar span {
+  margin-right: 12px;
+}
+.logout-btn {
+  background: #8e24aa;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
