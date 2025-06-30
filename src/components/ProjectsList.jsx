@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './ProjectsList.module.css';
 
 // Mock data for demonstration
 const mockProjects = [
@@ -39,38 +40,37 @@ export default function ProjectsList() {
   const paginated = sorted.slice((page - 1) * projectsPerPage, page * projectsPerPage);
 
   return (
-    <div>
-      <h2>Projects</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Projects</h2>
       <div>
-        <label>Sort by: </label>
-        <select value={sortBy} onChange={e => { setSortBy(e.target.value); setPage(1); }}>
-          {sortOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
+        <select className={styles.sort} value={sortBy} onChange={e => { setSortBy(e.target.value); setPage(1); }}>
+          {sortOptions.map(opt => <option key={opt.value} value={opt.value}>Order by {opt.label}</option>)}
         </select>
       </div>
-      <table border="1" cellPadding="8" style={{ marginTop: 10 }}>
-        <thead>
+      <table className={styles.table}>
+        <thead className={styles.thead}>
           <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Username</th>
-            <th>Created At</th>
+            <th className={styles.th}>Project Title</th>
+            <th className={styles.th}>Username</th>
+            <th className={styles.th}>Category</th>
+            <th className={styles.th}>Created At</th>
           </tr>
         </thead>
         <tbody>
-          {paginated.map(p => (
-            <tr key={p.id}>
-              <td>{p.title}</td>
-              <td>{p.category}</td>
-              <td>{p.username}</td>
-              <td>{p.created_at}</td>
+          {paginated.map((p, i) => (
+            <tr className={styles.tr} key={p.id}>
+              <td className={styles.td}>{p.title}</td>
+              <td className={styles.td}>{p.username}</td>
+              <td className={styles.td}>{p.category}</td>
+              <td className={styles.td}>{p.created_at}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div style={{ marginTop: 10 }}>
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>Previous</button>
-        <span style={{ margin: '0 10px' }}>Page {page} of {totalPages}</span>
-        <button onClick={() => setPage(page + 1)} disabled={page === totalPages}>Next</button>
+      <div className={styles.pagination}>
+        <button className={styles.pageBtn} onClick={() => setPage(page - 1)} disabled={page === 1}>Prev</button>
+        <span className={styles.pageNum}>{page}</span>
+        <button className={styles.pageBtn} onClick={() => setPage(page + 1)} disabled={page === totalPages}>Next</button>
       </div>
     </div>
   );

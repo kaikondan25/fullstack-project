@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './LoginForm.module.css';
 
 export default function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -16,18 +17,18 @@ export default function LoginForm({ onLogin }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login-form">
-      <h2>Login</h2>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <div>
-        <label>Username:</label>
-        <input value={username} onChange={e => setUsername(e.target.value)} />
+    <form onSubmit={handleSubmit} className={styles.loginContainer}>
+      <h2 className={styles.loginTitle}>Login</h2>
+      {error && <div className={styles.error}>{error}</div>}
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Username:</label>
+        <input className={styles.input} value={username} onChange={e => setUsername(e.target.value)} />
       </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Password:</label>
+        <input className={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </div>
-      <button type="submit">Login</button>
+      <button className={styles.button} type="submit">Login</button>
     </form>
   );
 }
