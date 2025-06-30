@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './ProjectsList.module.css';
+import Project from './Project';
 
 const sortOptions = [
   { value: 'recent', label: 'Recent Projects' },
@@ -57,13 +58,8 @@ export default function ProjectsList() {
             </tr>
           </thead>
           <tbody>
-            {projects.map((p) => (
-              <tr className={styles.tr} key={p.id}>
-                <td className={styles.td}>{p.title}</td>
-                <td className={styles.td}>{p.username}</td>
-                <td className={styles.td}>{p.category}</td>
-                <td className={styles.td}>{new Date(p.created_at).toLocaleDateString()}</td>
-              </tr>
+            {projects.map((project) => (
+              <Project key={project.id} project={project} />
             ))}
           </tbody>
         </table>
