@@ -19,6 +19,7 @@ export default function LoginForm({ onLogin }) {
         body: JSON.stringify({ username, password })
       });
       const data = await res.json();
+      
       if (res.ok && data.success) {
         onLogin(data.username);
       } else {

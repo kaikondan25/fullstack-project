@@ -12,7 +12,6 @@ async function seed() {
   // Create users
   const usersData = [
     { username: 'Abby', password: 'abby123' },
-    { username: 'Esakki', password: 'esakki123' },
     { username: 'John', password: 'john123' },
     { username: 'Jane', password: 'jane123' },
     { username: 'Mike', password: 'mike123' },
