@@ -9,9 +9,10 @@ A full-stack project management application built with React (frontend), Node.js
 - Projects joined with users and categories
 - Modern, responsive UI
 
-## Screenshot
+## Screenshots
 
-![Screenshot](./screenshot.png)
+![Screenshot](./docs/login.png)
+![Screenshot](./docs/project.png)
 
 ## Getting Started (Development)
 
